@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEAD - Pre-Work Assessment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0E182A 0%, #1F5A6A 100%);
+            color: #262626;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #0E182A;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .header p {
+            color: #6B7280;
+            font-size: 1.1em;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .brand-accent {
+            color: #1F7A82;
+            font-weight: bold;
+        }
+
+        .form-section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            color: #1F7A82;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            font-weight: bold;
+            border-left: 4px solid #1F7A82;
+            padding-left: 15px;
+        }
+
+        .section-description {
+            color: #6B7280;
+            font-size: 0.95em;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            color: #0E182A;
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 1em;
+        }
+
+        .input-wrapper {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+            resize: vertical;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #1F7A82;
+            box-shadow: 0 0 0 3px rgba(31, 122, 130, 0.1);
+        }
+
+        textarea {
+            min-height: 120px;
+            font-size: 0.95em;
+        }
+
+        .situation-card {
+            background: #F5F5F3;
+            border-left: 4px solid #C49B4A;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .situation-title {
+            color: #0E182A;
+            font-weight: bold;
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+
+        .situation-description {
+            color: #6B7280;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+
+        .scale-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .scale-button {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            background: white;
+            color: #6B7280;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        .scale-button:hover {
+            border-color: #1F7A82;
+            background: rgba(31, 122, 130, 0.05);
+        }
+
+        .scale-button.selected {
+            background: #1F7A82;
+            color: white;
+            border-color: #1F7A82;
+        }
+
+        .scale-button.selected-1 { background: #E8887E; border-color: #E8887E; color: white; }
+        .scale-button.selected-2 { background: #E3C170; border-color: #E3C170; color: white; }
+        .scale-button.selected-3 { background: #6FD0D6; border-color: #6FD0D6; color: white; }
+        .scale-button.selected-4 { background: #1F7A82; border-color: #1F7A82; color: white; }
+        .scale-button.selected-5 { background: #132A3A; border-color: #132A3A; color: white; }
+
+        .scale-label {
+            color: #6B7280;
+            font-size: 0.85em;
+            text-align: center;
+            width: 50px;
+        }
+
+        .scale-row {
+            margin-bottom: 20px;
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 40px;
+            justify-content: center;
+        }
+
+        button {
+            padding: 14px 35px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #1F7A82;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #132A3A;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(31, 122, 130, 0.3);
+        }
+
+        .btn-secondary {
+            background: #F5F5F3;
+            color: #1F7A82;
+            border: 2px solid #1F7A82;
+        }
+
+        .btn-secondary:hover {
+            background: #1F7A82;
+            color: white;
+        }
+
+        .success-message {
+            background: #E8F5E9;
+            border-left: 4px solid #4CAF50;
+            color: #2E7D32;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            display: none;
+        }
+
+        .error-message {
+            background: #FFEBEE;
+            border-left: 4px solid #F44336;
+            color: #C62828;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            display: none;
+        }
+
+        .progress-bar {
+            background: #E5E7EB;
+            height: 6px;
+            border-radius: 3px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #1F7A82 0%, #C49B4A 100%);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .required {
+            color: #E8887E;
+        }
+
+        .footnote {
+            color: #6B7280;
+            font-size: 0.85em;
+            margin-top: 40px;
+            text-align: center;
+            border-top: 1px solid #E5E7EB;
+            padding-top: 20px;
+        }
+
+        .hidden-input {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .form-section {
+                padding: 25px;
+            }
+
+            .scale-container {
+                justify-content: space-between;
+            }
+
+            .buttons-container {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>LEAD <span class="brand-accent">Pre-Work Assessment</span></h1>
+            <p>Antes de tu primera sesión, necesitamos entender tu punto de partida. Este diagnóstico personalizado nos permitirá diseñar un programa de coaching completamente alineado a ti.</p>
+        </div>
+
+        <form id="assessmentForm" action="https://formspree.io/f/mnpaogog" method="POST">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <!-- SECCIÓN 1: DATOS PERSONALES -->
+            <div class="form-section">
+                <div class="section-title">Datos Personales</div>
+                <div class="section-description">Información básica para personalizarte el programa</div>
+
+                <div class="form-group">
+                    <label for="fullName">Nombre Completo <span class="required">*</span></label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Teléfono</label>
+                    <input type="text" id="phone" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="position">Tu rol actual <span class="required">*</span></label>
+                    <input type="text" id="position" name="position" placeholder="Ej: Supervisor Legal, Jefe de Proyectos..." required>
+                </div>
+
+                <div class="form-group">
+                    <label for="company">Empresa/Sector</label>
+                    <input type="text" id="company" name="company" placeholder="Ej: Banca, Retail, Consultoría...">
+                </div>
+
+                <div class="form-group">
+                    <label for="yearsExperience">Años de experiencia en liderazgo</label>
+                    <select id="yearsExperience" name="yearsExperience">
+                        <option value="">Selecciona</option>
+                        <option value="0-2">0-2 años</option>
+                        <option value="2-5">2-5 años</option>
+                        <option value="5-10">5-10 años</option>
+                        <option value="10+">10+ años</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 2: SITUACIONES DE PRESENCIA EJECUTIVA -->
+            <div class="form-section">
+                <div class="section-title">Diagnóstico: Situaciones de Presencia Ejecutiva</div>
+                <div class="section-description">Indica qué tan cómodo/a te sientes en cada situación (1 = muy incómodo, 5 = completamente cómodo)</div>
+
+                <!-- Situación 1 -->
+                <div class="situation-card">
+                    <div class="situation-title">Situación 1: Presentar ante directivos o junta directiva</div>
+                    <div class="situation-description">Estás exponiendo un proyecto o resultado importante frente a directores o comité ejecutivo que están evaluándote.</div>
+                    <div class="scale-row">
+                        <div class="scale-label">1 = Muy incómodo/a</div>
+                        <div class="scale-container" id="situation1">
+                            <button type="button" class="scale-button" data-value="1">1</button>
+                            <button type="button" class="scale-button" data-value="2">2</button>
+                            <button type="button" class="scale-button" data-value="3">3</button>
+                            <button type="button" class="scale-button" data-value="4">4</button>
+                            <button type="button" class="scale-button" data-value="5">5</button>
+                        </div>
+                        <div class="scale-label">5 = Completamente cómodo/a</div>
+                    </div>
+                    <input type="hidden" id="situation1_value" name="situation1_value">
+                </div>
+
+                <!-- Situación 2 -->
+                <div class="situation-card">
+                    <div class="situation-title">Situación 2: Liderar una reunión difícil (conflicto o negociación)</div>
+                    <div class="situation-description">Tienes que manejar un conflicto con un par, negociar con otra área, o comunicar una decisión impopular bajo presión.</div>
+                    <div class="scale-row">
+                        <div class="scale-label">1 = Muy incómodo/a</div>
+                        <div class="scale-container" id="situation2">
+                            <button type="button" class="scale-button" data-value="1">1</button>
+                            <button type="button" class="scale-button" data-value="2">2</button>
+                            <button type="button" class="scale-button" data-value="3">3</button>
+                            <button type="button" class="scale-button" data-value="4">4</button>
+                            <button type="button" class="scale-button" data-value="5">5</button>
+                        </div>
+                        <div class="scale-label">5 = Completamente cómodo/a</div>
+                    </div>
+                    <input type="hidden" id="situation2_value" name="situation2_value">
+                </div>
+
+                <!-- Situación 3 -->
+                <div class="situation-card">
+                    <div class="situation-title">Situación 3: Responder preguntas incómodas bajo cuestionamiento</div>
+                    <div class="situation-description">Alguien te cuestiona públicamente en una reunión, o tienes que responder una pregunta para la que no tienes una respuesta perfecta.</div>
+                    <div class="scale-row">
+                        <div class="scale-label">1 = Muy incómodo/a</div>
+                        <div class="scale-container" id="situation3">
+                            <button type="button" class="scale-button" data-value="1">1</button>
+                            <button type="button" class="scale-button" data-value="2">2</button>
+                            <button type="button" class="scale-button" data-value="3">3</button>
+                            <button type="button" class="scale-button" data-value="4">4</button>
+                            <button type="button" class="scale-button" data-value="5">5</button>
+                        </div>
+                        <div class="scale-label">5 = Completamente cómodo/a</div>
+                    </div>
+                    <input type="hidden" id="situation3_value" name="situation3_value">
+                </div>
+
+                <!-- Situación 4 -->
+                <div class="situation-card">
+                    <div class="situation-title">Situación 4: Hablar con seguridad sobre ti mismo/a (sin sobrevenderte)</div>
+                    <div class="situation-description">En una conversación casual o formal, hablar de tus logros, fortalezas o propuestas sin justificarte excesivamente.</div>
+                    <div class="scale-row">
+                        <div class="scale-label">1 = Muy incómodo/a</div>
+                        <div class="scale-container" id="situation4">
+                            <button type="button" class="scale-button" data-value="1">1</button>
+                            <button type="button" class="scale-button" data-value="2">2</button>
+                            <button type="button" class="scale-button" data-value="3">3</button>
+                            <button type="button" class="scale-button" data-value="4">4</button>
+                            <button type="button" class="scale-button" data-value="5">5</button>
+                        </div>
+                        <div class="scale-label">5 = Completamente cómodo/a</div>
+                    </div>
+                    <input type="hidden" id="situation4_value" name="situation4_value">
+                </div>
+            </div>
+
+            <!-- SECCIÓN 3: MOTIVACIÓN Y OBJETIVOS -->
+            <div class="form-section">
+                <div class="section-title">¿Por qué buscas este programa?</div>
+                <div class="section-description">Cuéntanos qué te trae aquí y qué te preocupa</div>
+
+                <div class="form-group">
+                    <label for="why">¿Qué te motivó a buscar coaching en presencia ejecutiva? <span class="required">*</span></label>
+                    <textarea id="why" name="why" placeholder="Sé honesto/a: ¿qué situación o momento te llevó a decidirte?" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="concerns">¿Qué te preocupa o te limita hoy en tu presencia ejecutiva? <span class="required">*</span></label>
+                    <textarea id="concerns" name="concerns" placeholder="Ej: Me pongo nervioso/a frente a directivos, siento que no me toman en serio, no sé cómo manejar el cuestionamiento..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="goals">¿Qué quieres lograr con este programa? <span class="required">*</span></label>
+                    <textarea id="goals" name="goals" placeholder="Sé específico/a: ¿cómo quieres verte y sentirte como nuevo/a gerente?" required></textarea>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 4: MEDICIÓN DE ÉXITO -->
+            <div class="form-section">
+                <div class="section-title">Medición de Éxito</div>
+                <div class="section-description">¿Cuándo sabrás que el programa funcionó?</div>
+
+                <div class="form-group">
+                    <label for="success">¿Qué te haría sentir que estás teniendo éxito como nuevo/a gerente en relación a tu presencia ejecutiva? <span class="required">*</span></label>
+                    <textarea id="success" name="success" placeholder="Ej: Que mis directivos me hagan preguntas desafiantes y responda con confianza, que mi equipo me vea con más autoridad, que disfrute de presentar ante ejecutivos..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="indicators">¿Cuáles serían 3 indicadores concretos de que has avanzado? <span class="required">*</span></label>
+                    <textarea id="indicators" name="indicators" placeholder="Ej: 1) Presenté sin notas ante directivos y fue fluido. 2) Manejé una pregunta difícil sin defensividad. 3) Mi jefe me dio feedback positivo sobre mi liderazgo." required></textarea>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 5: CONTEXTO -->
+            <div class="form-section">
+                <div class="section-title">Contexto Adicional</div>
+
+                <div class="form-group">
+                    <label for="availabilityNotes">¿Alguna nota sobre tu disponibilidad o preferencias para las sesiones?</label>
+                    <textarea id="availabilityNotes" name="availabilityNotes" placeholder="Ej: Prefiero mañanas, presencial, virtual, zona de Lima..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="additionalInfo">¿Hay algo más que deba saber sobre ti o tu situación?</label>
+                    <textarea id="additionalInfo" name="additionalInfo" placeholder="Contexto, antecedentes, expectativas..."></textarea>
+                </div>
+            </div>
+
+            <div class="buttons-container">
+                <button type="reset" class="btn-secondary">Limpiar formulario</button>
+                <button type="submit" class="btn-primary">Enviar Assessment</button>
+            </div>
+
+            <div class="success-message" id="successMessage">
+                ✓ Tu assessment ha sido enviado correctamente. Nos pondremos en contacto en 24 horas con tu diagnóstico personalizado.
+            </div>
+
+            <div class="error-message" id="errorMessage">
+                ⚠️ Por favor completa todos los campos requeridos antes de enviar.
+            </div>
+        </form>
+
+        <div class="footnote">
+            <p><strong>LEAD by Lucianna Moreno</strong> | Coaching ejecutivo 1:1 · 3 sesiones<br>
+            linkedin.com/in/luciannamoreno · @lucianna.moreno</p>
+        </div>
+    </div>
+
+    <script>
+        // Formspree initialization
+        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+        formspree('initForm', { formElement: '#assessmentForm', formId: 'mnpaogog' });
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
+    <script>
+        // Selector de escala interactivo
+        document.querySelectorAll('.scale-container').forEach(container => {
+            container.addEventListener('click', function(e) {
+                if (e.target.classList.contains('scale-button')) {
+                    const value = e.target.getAttribute('data-value');
+                    const containerId = this.id;
+                    
+                    // Limpiar selecciones previas
+                    this.querySelectorAll('.scale-button').forEach(btn => {
+                        btn.classList.remove('selected', `selected-${value}`);
+                    });
+                    
+                    // Seleccionar el botón clickeado
+                    e.target.classList.add('selected', `selected-${value}`);
+                    
+                    // Guardar valor en input hidden
+                    document.getElementById(`${containerId}_value`).value = value;
+                    
+                    // Actualizar progress
+                    updateProgress();
+                }
+            });
+        });
+
+        // Función para actualizar la barra de progreso
+        function updateProgress() {
+            const form = document.getElementById('assessmentForm');
+            const inputs = form.querySelectorAll('input[required], textarea[required]');
+            let filled = 0;
+
+            inputs.forEach(input => {
+                if (input.value.trim() !== '') {
+                    filled++;
+                }
+            });
+
+            const percentage = (filled / inputs.length) * 100;
+            document.getElementById('progressFill').style.width = percentage + '%';
+        }
+
+        // Monitorear cambios en inputs
+        document.getElementById('assessmentForm').addEventListener('input', updateProgress);
+
+        // Inicializar progreso
+        updateProgress();
+
+        // Inicializar Formspree AJAX
+        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+        formspree('initForm', { formElement: '#assessmentForm', formId: 'mnpaogog' });
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+</body>
+</html>
